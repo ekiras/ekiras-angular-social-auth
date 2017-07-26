@@ -1,0 +1,38 @@
+{
+  "name": "ekiras-angular-social-auth",
+  "description": "Angular 4 Social Login with facebook, Linkedin , Google, Instagram etc",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ekiras/angular-social-auth.git"
+  },
+  "author": {
+    "name": "Ekansh Rastogi",
+    "email": "ekirastogi@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "angular 2",
+    "angular2",
+    "angular4",
+    "angular social auth",
+    "angular facebook login",
+    "angular google login",
+    "angular linkedin login",
+    "angular instagram login",
+    "facebook login",
+    "google login",
+    "instagram login"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "git@github.com:ekiras/angular-social-auth.git/issues"
+  },
+  "module": "ekiras-angular-social-auth.js",
+  "typings": "ekiras-angular-social-auth.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
