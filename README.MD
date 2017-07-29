@@ -1,5 +1,10 @@
 # ekiras-angular-social-auth
 
+This Plugin will work with Angular version ^4.0.0. It prvideds three basic functionalities 
+  1. Login
+  2. Status
+  3. Logout
+
 ## Installation
 
 To install this library, run:
@@ -8,63 +13,142 @@ To install this library, run:
 $ npm install ekiras-angular-social-auth --save
 ```
 
-## Consuming your library
+## Setup 
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
+You need to include the **EkirasSocialAuthModule** in the main module of your project.
 
-```bash
-$ npm install ekiras-angular-social-auth
-```
+### Including Module in the main module of the Angular Project.
 
-and then from your Angular `AppModule`:
+If you want to include the **EkirasSocialAuthModule** in the main module of the project, then you can do so as follows.
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
-
-// Import your library
-import { SampleModule } from 'ekiras-angular-social-auth';
+import { EkirasSocialAuthModule } from 'ekiras-angular-social-auth';
 
 @NgModule({
   declarations: [
-    AppComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
 
-    // Specify your library as an import
-    LibraryModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    // inlcude EkirasSocialAuthModule in the main module
+    EkirasSocialAuthModule.forRoot({
+      facebook: {
+        appId: '<app-id>',
+        options: {
+          scope: '<permissions>'
+        }
+      }
+    })
+  ]
 })
-export class AppModule { }
+export class AppModule {
+
+}
+
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+### Including the Module in Shared Module of the Angular Project.
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+If you want to include the **EkirasSocialAuthModule** in a shared moduled, then you can include the module as follows
+
+```typescript
+
+import { NgModule } from '@angular/core';
+import { EkirasSocialAuthModule } from 'ekiras-angular-social-auth';
+
+@NgModule({
+  declarations: [
+  ],
+  imports: [
+
+    // inlcude EkirasSocialAuthModule in the main module
+    EkirasSocialAuthModule.forRoot({
+      facebook: {
+        appId: '<app-id>',
+        options: {
+          scope: '<permissions>'
+        }
+      }
+    })
+  ],
+  exports: [
+    EkirasSocialAuthModule
+  ]
+})
+export class SharedModule {
+
+}
 ```
 
-## Development
+### Facebook Configurations.
 
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+| Option | Description  | Default Value |
+|--------| --------|---------------|
+|appId | facebook app id| Mandatory (no default value)|
+|version| facebook sdk version| 'v2.8' |
+|async| If the facebook sdk should be loaded asynchronously| true|
+|cookie|  Enable cookies to allow the server to access the session| true|
+|xfbml| parse social plugins on this page | true|
 
-```bash
-$ npm run build
+
+## Including SocialAuthService.
+
+**SocialAuthService** 
+
+```typescript
+import { Component } from '@angular/core';
+import { SocialAuthService, FacebookUserData } from 'ekiras-angular-social-auth';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  data: FacebookUserData;
+
+  constructor(private socialAuthService: SocialAuthService) {
+
+  }
+
+  public login(provider: string) {
+    this.socialAuthService.login(provider).subscribe((data: FacebookUserData) => {
+       // {FacebookUserData} user data
+    });
+  }
+
+  public status(provider: string) {
+    this.socialAuthService.status(provider).subscribe((status: boolean) => {
+      //  boolean status
+    });
+  }
+
+  public logout(provider: string) {
+    this.socialAuthService.logout(provider).subscribe((status: boolean) => {
+      // boolean status
+    });
+  }
+
+}
+
 ```
 
-To lint all `*.ts` files:
+**app.component.html**
 
-```bash
-$ npm run lint
+```html
+
+<button (click)="login('facebook');">Fb Login</button>
+<button (click)="status('facebook');">Fb Status</button>
+<button (click)="logout('facebook');">Fb Logout</button>
+
 ```
 
 ## License

@@ -12,7 +12,10 @@ export class SocialAuthService implements BaseSocialService {
 
     }
 
-
+    /**
+     * This method will return the user profile data if user is logged in or else will propmt user for login.
+     * @param provider
+     */
     public login(provider: string): Observable<FacebookUserData | any> {
         switch (provider) {
             case 'facebook':
@@ -20,14 +23,23 @@ export class SocialAuthService implements BaseSocialService {
         }
     }
 
-    public logout(provider: string): boolean {
+    /**
+     * This method will signout the user from the provided social provider
+     * @param provider
+     */
+    public logout(provider: string): Observable<any> {
         switch (provider) {
-
+            case 'facebook':
+                return this.facebookService.logout();
         }
         return null;
     }
 
-    public status(provider: string): Observable<any> {
+    /**
+     * This method will return if the user is logged in by the given provider.
+     * @param provider
+     */
+    public status(provider: string): Observable<boolean> {
         switch (provider) {
             case 'facebook':
                 return this.facebookService.status();

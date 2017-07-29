@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ekiras/angular-social-auth.git"
+    "url": "git@github.com:ekiras/ekiras-angular-social-auth.git"
   },
   "author": {
     "name": "Ekansh Rastogi",
@@ -36,7 +36,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "git@github.com:ekiras/angular-social-auth.git/issues"
+    "url": "git@github.com:ekiras/ekiras-angular-social-auth.git/issues"
   },
   "devDependencies": {
     "@angular/common": "^4.0.0",

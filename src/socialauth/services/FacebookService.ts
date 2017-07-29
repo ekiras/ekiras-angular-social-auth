@@ -53,8 +53,13 @@ export class FacebookService {
         });
     }
 
-    public logout(): any {
-
+    public logout(): Observable<any> {
+        return Observable.create((observer: Observer<Object>) => {
+            FB.logout(function (res: any) {
+                observer.next(true);
+                observer.complete();
+            });
+        });
     }
 
     public status(): Observable<boolean> {
@@ -89,6 +94,6 @@ export class FacebookService {
                 source: userRes.cover.source
             },
             accessToken: accessToken
-        }
+        };
     }
 }

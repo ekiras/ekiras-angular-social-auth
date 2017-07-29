@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs/Rx';
 export interface BaseSocialService {
-    login: (provider: string) => any;
-    logout: (provider: string) => boolean;
-    status: (provider: string) => any;
+    login: (provider: string) => Observable<any>;
+    logout: (provider: string) => Observable<any>;
+    status: (provider: string) => Observable<any>;
 };
 
 

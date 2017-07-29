@@ -57,7 +57,7 @@ export interface FacebookAuthConfig {
      */
     async?: boolean;
     /**
-     * enable cookies to allow the server to access the session
+     * Enable cookies to allow the server to access the session
      */
     cookie?: boolean;
     /**
