@@ -1,7 +1,7 @@
 {
   "name": "ekiras-angular-social-auth",
   "description": "",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
