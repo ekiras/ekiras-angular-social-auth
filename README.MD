@@ -1,6 +1,6 @@
 # ekiras-angular-social-auth
 
-This Plugin will work with Angular version ^4.0.0. It prvideds three basic functionalities 
+This Plugin will work with Angular version ^4.0.0. It provides three basic functionalities 
   1. Login
   2. Status
   3. Logout
@@ -87,6 +87,10 @@ export class SharedModule {
 }
 ```
 
+## Configuring the Module
+
+You can configure the module with the following social provider's configurations.
+
 ### Facebook Configurations.
 
 | Option | Description  | Default Value |
@@ -96,6 +100,10 @@ export class SharedModule {
 |async| If the facebook sdk should be loaded asynchronously| true|
 |cookie|  Enable cookies to allow the server to access the session| true|
 |xfbml| parse social plugins on this page | true|
+|options 
+   1. scope
+   2. returnScopes | Provide the comma separated scopes or pemissions for which the data will be fetched | public_profile |
+|options.returnScopes|the granted scopes will be returned in a comma-separated list in the grantedScopes| false|
 
 
 ## Including SocialAuthService.
