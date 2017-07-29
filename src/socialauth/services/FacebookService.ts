@@ -77,6 +77,7 @@ export class FacebookService {
 
     private parseUserResponse(userRes, accessToken): FacebookUserData {
         return {
+            uid: userRes.id,
             email: userRes.email,
             firstName: userRes.first_name,
             lastName: userRes.last_name,

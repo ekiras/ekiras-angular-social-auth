@@ -7,6 +7,7 @@ export interface BaseSocialService {
 
 
 export interface FacebookUserData {
+    uid: string;
     email: string;
     gender: string;
     firstName: string;
